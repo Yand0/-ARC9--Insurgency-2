@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"	"models\1\ACOG_Arrow"
+	"$translucent"  "1"
+	"$additive"		"0"
+}

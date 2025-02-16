@@ -1,0 +1,6 @@
+"UnlitGeneric"
+{
+	"$basetexture"	"models\attachments\arc9_scp5k\sights\reticle\OKP7"
+	"$translucent"  "1"
+	"$additive"		"1"
+}
