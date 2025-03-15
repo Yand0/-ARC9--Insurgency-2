@@ -21,7 +21,7 @@ SWEP.Trivia = {
 
 SWEP.Credits = {
     Author = "Yando, ProstoMouse",
-    Assets = "Insurgency 2",
+    Assets = "New World Interactive",
 }
 
 SWEP.Description = [[The M4 carbine is a shorter and lighter variant of the M16A2 assault rifle, chambered 5.56×45mm NATO assault rifle developed in the United States during the 1980s.]]
@@ -58,12 +58,12 @@ SWEP.RicochetChance = 0.25
 
 SWEP.BodyDamageMults = {
     [HITGROUP_HEAD] = 2.5,
-    [HITGROUP_CHEST] = 1.5,
-    [HITGROUP_STOMACH] = 1.1,
-    [HITGROUP_LEFTARM] = 1,
-    [HITGROUP_RIGHTARM] = 1,
-    [HITGROUP_LEFTLEG] = 0.9,
-    [HITGROUP_RIGHTLEG] = 0.9,
+    [HITGROUP_CHEST] = 0.4,
+    [HITGROUP_STOMACH] = 0.3,
+    [HITGROUP_LEFTARM] = 0.2,
+    [HITGROUP_RIGHTARM] = 0.2,
+    [HITGROUP_LEFTLEG] = 0.2,
+    [HITGROUP_RIGHTLEG] = 0.2,
 }
 
 -------------------------- PHYS BULLET BALLISTICS
@@ -93,21 +93,18 @@ SWEP.Firemodes = {
     {
         Mode = 1,
     },
-	{
-	    Mode = 3,
-	},
 }
 
-SWEP.BarrelLength = 24
+SWEP.BarrelLength = 18
 
 -------------------------- RECOIL
 
--- General recoil multiplier
-SWEP.Recoil = 0.95
+SWEP.Recoil = 1
 
--- These multipliers affect the predictible recoil by making the pattern taller, shorter, wider, or thinner.
-SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 1 -- Multiplier for vertical recoil
+SWEP.RecoilUp = 2 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 2 -- Multiplier for vertical recoil
+
+SWEP.RecoilPatternDrift = 5
 
 SWEP.RecoilMultHipFire = 0.75
 
@@ -176,8 +173,8 @@ SWEP.SpeedMultCrouch = 1
 
 -------------------------- TRACERS
 
-SWEP.TracerNum = 1 -- Tracer every X
-SWEP.TracerColor = Color(255, 0, 0) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
+SWEP.TracerNum = 5 -- Tracer every X
+SWEP.TracerColor = Color(0, 255, 0) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
 
 -------------------------- POSITIONS
 
@@ -207,8 +204,8 @@ SWEP.NearWallAng = Angle(20, -10, -10)
 SWEP.MovingPos =  Vector(0, -0.5, -0.5)
 SWEP.MovingAng =  Angle(0, 0, 2)
 
-SWEP.ViewModelFOVBase = 70
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -0.5)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.CrouchPos = Vector(0, -1, -1)
@@ -236,7 +233,7 @@ SWEP.AnimDraw = false
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_m16_1p" -- Used for some muzzle effects.
 
 SWEP.ShellModel = "models/weapons/ins/shells/556x45.mdl"
 SWEP.ShellCorrectAng = Angle(0, 5, 0)
@@ -576,15 +573,39 @@ SWEP.Attachments = {
         Bone = "A_Optic",
         Pos = Vector(0, 0, 0),
         Ang = Angle(90, 90, 0),
-        Category = {"ins2_aroptics"},
+        Category = {"ins2_aroptics", "ins2_arrisoptics"},
 		Integral = true
 	},
 	{
-	    PrintName = "Rail right",
+	    PrintName = "RIS Right",
 		DefaultName = "Rail",
         Bone = "A_LaserFlashlight",
-        Pos = Vector(0, 0, 0),
-        Ang = Angle(0, 0, 91),
-        Category = {"ins2_arrailright"},
+        Pos = Vector(-2, -0.2, 0),
+        Ang = Angle(0, 0, 0),
+        Category = {"ins2_m4rail", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
+	},
+	{
+	    PrintName = "RIS Left",
+		DefaultName = "Rail",
+        Bone = "A_LaserFlashlight",
+        Pos = Vector(-2, 2.2, 0),
+        Ang = Angle(0, 0, 180),
+        Category = {"ins2_m4rail", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
+	},
+	{
+	    PrintName = "RIS Bottom",
+		DefaultName = "Rail",
+        Bone = "A_Underbarrel",
+        Pos = Vector(-5.5, -1.5, 1),
+        Ang = Angle(0, 0, 0),
+        Category = {"ins2_m4underbarrel"},
+	},
+	{
+	    PrintName = "RIS Top",
+		DefaultName = "Rail",
+        Bone = "A_LaserFlashlight",
+        Pos = Vector(-2, 1, -1.3),
+        Ang = Angle(180, 180, 90),
+        Category = {"ins2_m4rail", "ins2_m4railleftrighttop"},
 	},
 }

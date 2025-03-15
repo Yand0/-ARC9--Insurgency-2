@@ -21,7 +21,7 @@ SWEP.Trivia = {
 
 SWEP.Credits = {
     Author = "Yando",
-    Assets = "Insurgency 2",
+    Assets = "New World Interactive",
 }
 
 SWEP.Description = [[Beretta 92, an Italian semi-automatic pistol, chambered in 9×19mm, adopted by USA."]]
@@ -75,7 +75,7 @@ SWEP.Crosshair = false
 
 -------------------------- FIREMODES
 
-SWEP.RPM = 200
+SWEP.RPM = 250
 
 SWEP.Firemodes = {
     {
@@ -160,11 +160,6 @@ SWEP.SpeedMultCrouch = 1
 
 SWEP.SwayAddSights = 0.2
 
--------------------------- TRACERS
-
-SWEP.TracerNum = 1 -- Tracer every X
-SWEP.TracerColor = Color(255, 255, 155) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
-
 -------------------------- POSITIONS
 
 SWEP.IronSights = {
@@ -193,7 +188,7 @@ SWEP.NearWallAng = Angle(20, -10, -10)
 SWEP.MovingPos =  Vector(0, -0.5, -0.5)
 SWEP.MovingAng =  Angle(0, 0, 2)
 
-SWEP.ViewModelFOVBase = 70
+SWEP.ViewModelFOVBase = 80
 SWEP.ActivePos = Vector(0, 0, -1)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
@@ -219,7 +214,7 @@ SWEP.AnimDraw = false
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_m9_1p" -- Used for some muzzle effects.
 
 SWEP.ShellModel = "models/weapons/ins/shells/9x19.mdl"
 SWEP.ShellCorrectAng = Angle(90, 90, 90)
@@ -507,3 +502,13 @@ SWEP.Animations = {
 }
 
 -------------------------- ATTACHMENTS
+SWEP.Attachments = { 
+	{
+	    PrintName = "Tacticals",
+		DefaultName = "None",
+        Bone = "A_Underbarrel",
+        Pos = Vector(-2, 0, 0),
+        Ang = Angle(0, -90, 0),
+        Category = {"ins2_pistoltacticalsm9"},
+	},
+}

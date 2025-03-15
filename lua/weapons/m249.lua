@@ -12,7 +12,7 @@ SWEP.Class = "LMG"
 
 SWEP.Trivia = {
     Manufacturer = "FN America",
-    Calibre = "5.56x51mm",
+    Calibre = "5.56x45mm",
     Mechanism = "Gas-operated long-stroke piston",
     Origin = "Belgium / United States",
     Year = "1984"
@@ -30,7 +30,7 @@ SWEP.WorldModel = "models/weapons/w_mach_m249para.mdl"
 
 SWEP.ViewModelFOVBase = 70
 
-SWEP.Slot = 3
+SWEP.Slot = 2
 
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
@@ -41,8 +41,13 @@ SWEP.WorldModelOffset = {
 }
 SWEP.NoTPIKVMPos = true
 
-SWEP.DefaultBodygroups = "0000000000000000000000"
+SWEP.DefaultBodygroups = "belt"
 SWEP.DefaultSkin = 0
+
+-------------------------- TRACERS
+
+SWEP.TracerNum = 10 -- Tracer every X
+SWEP.TracerColor = Color(0, 255, 0) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
 
 -------------------------- DAMAGE PROFILE
 
@@ -66,12 +71,12 @@ SWEP.DamageType = DMG_BULLET -- The damage type of the gun.
 
 SWEP.BodyDamageMults = {
     [HITGROUP_HEAD] = 2.5,
-    [HITGROUP_CHEST] = 1.15,
-    [HITGROUP_STOMACH] = 1.1,
-    [HITGROUP_LEFTARM] = 1,
-    [HITGROUP_RIGHTARM] = 1,
-    [HITGROUP_LEFTLEG] = 0.75,
-    [HITGROUP_RIGHTLEG] = 0.75,
+    [HITGROUP_CHEST] = 0.4,
+    [HITGROUP_STOMACH] = 0.3,
+    [HITGROUP_LEFTARM] = 0.2,
+    [HITGROUP_RIGHTARM] = 0.2,
+    [HITGROUP_LEFTLEG] = 0.2,
+    [HITGROUP_RIGHTLEG] = 0.2,
 }
 
 -------------------------- PHYS BULLET BALLISTICS
@@ -107,8 +112,8 @@ SWEP.Firemodes = {
 
 SWEP.Recoil = 2.5
 
-SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 0.75 -- Multiplier for vertical recoil
+SWEP.RecoilUp = 2 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 1 -- Multiplier for vertical recoil
 
 SWEP.RecoilRandomUp = 0.25
 SWEP.RecoilRandomSide = 0.25
@@ -117,9 +122,34 @@ SWEP.RecoilAutoControl = 1 -- Multiplier for automatic recoil control.
 
 SWEP.RecoilPatternDrift = 60
 
+SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = true -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
+
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
+
+SWEP.VisualRecoilUp = 150.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -100.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
+
+SWEP.VisualRecoilPunch = 50 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 2
+SWEP.VisualRecoilMultSights = 1
+SWEP.VisualRecoilPositionBump = 1.5
+
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
+
+SWEP.RecoilKick = 1 -- Camera recoil
+SWEP.RecoilKickDamping = 70.151 -- Camera recoil damping
+SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camera go up (only visually) as recoil increases, SWEP.Recoil * SWEP.RecoilKick = effect of this
+
+
 -------------------------- SPREAD
 
-SWEP.Spread = 0.05 -- And so it shall be.
+SWEP.Spread = 0.001
 
 -------------------------- HANDLING
 
@@ -130,7 +160,7 @@ SWEP.Sway = 0.75
 SWEP.SwayMultSights = 0.1
 SWEP.SwayMultMove = 1.5
 
-SWEP.AimDownSightsTime = 0.40 -- How long it takes to go from hip fire to aiming down sights.
+SWEP.AimDownSightsTime = 0.6 -- How long it takes to go from hip fire to aiming down sights.
 SWEP.SprintToFireTime = 0.45 -- How long it takes to go from sprinting to being able to fire.
 
 SWEP.SpeedMult = 0.9
@@ -161,7 +191,7 @@ end
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_1" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_m249_1p" -- Used for some muzzle effects.
 
 SWEP.AfterShotEffect = "arc9_aftershoteffect"
 SWEP.AfterShotParticle = nil -- Particle to spawn after shooting
@@ -182,7 +212,7 @@ SWEP.IronSights = {
     Pos = Vector(-2.05, 1, 0.95),
     Ang = Angle(0, -0.25, 0),
     Magnification = 1,
-    ViewModelFOV = 60
+    ViewModelFOV = 70
 }
 
 SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
@@ -190,7 +220,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, 15),
 }
 
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -0.5)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.MovingPos = Vector(0, -0.5, 0)
@@ -201,7 +232,7 @@ SWEP.CrouchPos = Vector(-1, 0, 1.5)
 SWEP.CrouchAng = Angle(0, 0, 0)
 
 -- Position when sprinting or safe
-SWEP.RestPos = Vector(5, 2, 1)
+SWEP.RestPos = Vector(5, 2, -0.5)
 SWEP.RestAng = Angle(45, -15, 0)
 
 
@@ -230,8 +261,8 @@ SWEP.PeekPos = Vector(0, 0, -1)
 SWEP.PeekAng = Angle(0, 0, 0)
 
 SWEP.BulletBones = {
-    [0] = "m249_belt_full.smd",
-    [1] = "m249_belt_02.smd",
+    [0] = "SAW_BULLET_MAIN",
+    [1] = "SAW_BULLET_00",
     [2] = "SAW_BULLET_02",
     [3] = "SAW_BULLET_03",
     [4] = "SAW_BULLET_04",
@@ -245,7 +276,7 @@ SWEP.BulletBones = {
     [12] = "SAW_BULLET_12",
     [13] = "SAW_BULLET_13",
     [14] = "SAW_BULLET_14",
-    [15] = "m249_belt_15.smd",
+    [15] = "SAW_BULLET_15",
 }
 
 SWEP.HeightOverBore = 1
@@ -313,7 +344,6 @@ SWEP.Animations = {
         {t = 39 / 33, s = path .. "boltrelease.wav"},
         {t = 95 / 33, s = path .. "coveropen.wav"},
 		{t = 137 / 33, s = path .. "magout_full.wav"},
-		{t = 145 / 33, s = path .. "beltremove.wav"},
 		{t = 168 / 33, s = path .. "armmovement_02.wav"},
 		{t = 188 / 33, s = path .. "fetchmag.wav"},
 		{t = 228 / 33, s = path .. "magin.wav"},

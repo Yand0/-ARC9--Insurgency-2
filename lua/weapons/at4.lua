@@ -52,7 +52,7 @@ SWEP.ShootEntForce = 7000
 
 -------------------------- MAGAZINE
 
-SWEP.Ammo = "RPG_Round" -- What ammo type this gun uses.
+SWEP.Ammo = "item_ammo_ar2_altfire" -- What ammo type this gun uses.
 
 SWEP.ChamberSize = 0 -- The amount of rounds this gun can chamber.
 SWEP.ClipSize = 1 -- Self-explanatory.
@@ -60,13 +60,15 @@ SWEP.SupplyLimit = 0 -- Amount of magazines of ammo this gun can take from an AR
 
 SWEP.ReloadWhileSprint = true -- This weapon can reload while the user is sprinting.
 SWEP.ReloadInSights = false -- This weapon can aim down sights while reloading.
+SWEP.Disposable = true
+SWEP.BottomlessClip = false
 
 SWEP.BarrelLength = 32
 
 SWEP.DryFireDelay = 0.25
 -------------------------- FIREMODES
 
-SWEP.RPM = 1000
+SWEP.RPM = 1
 
 SWEP.Firemodes = {
     {
@@ -75,7 +77,7 @@ SWEP.Firemodes = {
 }
 
 SWEP.TriggerDelay = true
-SWEP.TriggerDelayTime = 0.5
+SWEP.TriggerDelayTime = 0.3
 SWEP.TriggerDelayTimeSights = 0.25
 SWEP.TriggerDelayCancellable = false
 SWEP.TriggerDelayRepeat = true
@@ -111,7 +113,7 @@ SWEP.SwayMultMove = 1.5
 SWEP.AimDownSightsTime = 0.75 -- How long it takes to go from hip fire to aiming down sights.
 SWEP.SprintToFireTime = 0.75 -- How long it takes to go from sprinting to being able to fire.
 
-SWEP.SpeedMult = 0.90
+SWEP.SpeedMult = 0.80
 
 -------------------------- SOUNDS
 
@@ -124,24 +126,21 @@ SWEP.ShootSound = "weapons/at4/at4_fp.wav"
 SWEP.DistantShootSound = "weapons/at4/at4_dist.wav"
 
 SWEP.DryFireSound = "weapons/flaregun/flaregun_cockhammer.wav"
-SWEP.DryFireSingleAction = false
+SWEP.DryFireSingleAction = true
 
 SWEP.EnterSightsSound = "universal/uni_ads_in_01.wav"
 SWEP.ExitSightsSound = "universal/uni_ads_out_01.wav"
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_m79" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "ins_weapon_rpg_backblast"
+SWEP.AfterShotParticle = "ins_weapon_rpg_muzzleflash"
+SWEP.AfterShotParticleDelay = -1
+SWEP.ProceduralViewQCA = 1
 
-SWEP.AfterShotEffect = "arc9_aftershoteffect"
-SWEP.AfterShotParticle = nil -- Particle to spawn after shooting
---idc how to make it drop after reloading lol
-SWEP.ShouldDropMag = true
-SWEP.DropMagazineModel = "models/weapons/ins/at4/w_at4.mdl" -- Set to a string or table to drop this magazine when reloading.
-SWEP.DropMagazineSounds = {"physics/metal/weapon_impact_soft1.wav", "physics/metal/weapon_impact_soft2.wav", "physics/metal/weapon_impact_soft3.wav"}
-SWEP.DropMagazineAmount = 1 -- Amount of mags to drop.
-SWEP.DropMagazineTime = 0.8
-SWEP.DropMagazineQCA = 67
+SWEP.CamQCA = 1
+SWEP.CamQCA_Mult = 1
+SWEP.CamCoolView = true
 
 SWEP.NoShellEject = true
 
@@ -153,7 +152,7 @@ SWEP.CamCoolView = true -- Enable to use procedural camera movement. Set CamQCA 
 
 SWEP.IronSights = {
     Pos = Vector(-1.31, 0, 0.65),
-    Ang = Angle(0, 2, 7),
+    Ang = Angle(-1.5, 2, 7),
     Magnification = 1,
     ViewModelFOV = 75
 }
@@ -207,10 +206,6 @@ SWEP.HeightOverBore = 1
 
 -------------------------- HoldTypes
 
-SWEP.BulletBones = {
-    [1] = "Warhead"
-}
-
 SWEP.HoldType = "rpg"
 SWEP.HoldTypeSprint = "passive"
 SWEP.HoldTypeHolstered = nil
@@ -224,6 +219,7 @@ SWEP.AnimDraw = false
 SWEP.AnimMelee = ACT_GMOD_GESTURE_MELEE_SHOVE_2HAND
 
 local path = "weapons/at4/at4_"
+local common = "universal/uni_"
 
 SWEP.Animations = {
     ["idle"] = { Source = "base_idle" },
@@ -250,6 +246,13 @@ SWEP.Animations = {
         {t = 5 / 30, s = path .. "shoulder.wav"},
     } },
     ["holster"] = { Source = "base_holster", EventTable = {
-        {t = 0, s = ARC9INS2.Holster},
+        {t = 0, s = common .. "weapon_holster.wav"},
     } },
+	["holster_empty"] = { Source = "base_toss", EventTable = {
+        {t = 0, s = common .. "weapon_holster.wav"},
+    } },
+	["dispose"] = { Source = "base_toss", MinProgress = 0.75, MagSwapTime = 3, Mult = 0.9,  EventTable = {
+        {t = 0 / 32.5, s = path .. "ready.wav"},
+        {t = 20 / 32.5, s = path .. "shoulder.wav"},
+	} },
 }

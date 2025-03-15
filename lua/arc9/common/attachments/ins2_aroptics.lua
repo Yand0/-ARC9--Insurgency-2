@@ -25,7 +25,7 @@ ATT = {}
 
 ATT.PrintName = "M4 Flip-Up irons"
 ATT.CompactName = "Flip-Up Irons"
-ATT.Icon = Material("entities/ch.png", "mips smooth")
+ATT.Icon = Material("entities/m40flipup.png", "mips smooth")
 ATT.Description = [[Standard issue M4 Flip-Up Irons]]
 ATT.MenuCategory = "ARC9 - Insurgency 2"
 ATT.Category = "ins2_aroptics"

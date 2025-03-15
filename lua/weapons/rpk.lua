@@ -21,7 +21,7 @@ SWEP.Trivia = {
 
 SWEP.Credits = {
     Author = "Yando",
-    Assets = "Insurgency 2",
+    Assets = "New World Interactive",
 }
 
 SWEP.Description = [[RPK is a 7.62×39mm Soviet/Russian light support weapon, developed in the late 1950s.]]
@@ -58,12 +58,12 @@ SWEP.RicochetChance = 0.25
 
 SWEP.BodyDamageMults = {
     [HITGROUP_HEAD] = 2.5,
-    [HITGROUP_CHEST] = 1.5,
-    [HITGROUP_STOMACH] = 1.1,
-    [HITGROUP_LEFTARM] = 1,
-    [HITGROUP_RIGHTARM] = 1,
-    [HITGROUP_LEFTLEG] = 0.9,
-    [HITGROUP_RIGHTLEG] = 0.9,
+    [HITGROUP_CHEST] = 0.6,
+    [HITGROUP_STOMACH] = 0.5,
+    [HITGROUP_LEFTARM] = 0.30,
+    [HITGROUP_RIGHTARM] = 0.30,
+    [HITGROUP_LEFTLEG] = 0.30,
+    [HITGROUP_RIGHTLEG] = 0.30,
 }
 
 -------------------------- PHYS BULLET BALLISTICS
@@ -107,8 +107,8 @@ SWEP.BarrelLength = 24
 
 SWEP.Recoil = 2.5
 
-SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 0.75 -- Multiplier for vertical recoil
+SWEP.RecoilUp = 2 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 1 -- Multiplier for vertical recoil
 
 SWEP.RecoilRandomUp = 0.25
 SWEP.RecoilRandomSide = 0.25
@@ -117,9 +117,34 @@ SWEP.RecoilAutoControl = 1 -- Multiplier for automatic recoil control.
 
 SWEP.RecoilPatternDrift = 60
 
+SWEP.UseVisualRecoil = true
+SWEP.PhysicalVisualRecoil = true -- Visual recoil actually affects your aim point.
+SWEP.VisualRecoil = 0.01
+
+SWEP.VisualRecoilCenter = Vector(0, -5, 20) -- The "axis" of visual recoil. Where your hand is.
+
+SWEP.VisualRecoilUp = 150.0 -- Vertical tilt for visual recoil.F
+SWEP.VisualRecoilUpAddSighted = -100.0
+SWEP.VisualRecoilSide = 2 -- Horizontal tilt for visual recoil.
+SWEP.VisualRecoilRoll = 300.0 -- Roll tilt for visual recoil.
+
+SWEP.VisualRecoilPunch = 50 -- How far back visual recoil moves the gun.
+SWEP.VisualRecoilPunchMultSights = 2
+SWEP.VisualRecoilMultSights = 1
+SWEP.VisualRecoilPositionBump = 1.5
+
+SWEP.VisualRecoilDampingConst = 80 -- How spring will be visual recoil, 120 is default
+SWEP.VisualRecoilSpringMagnitude = 5
+SWEP.VisualRecoilSpringPunchDamping = 5 -- ehh another val for "eft" recoil, 6 is default
+
+SWEP.RecoilKick = 1 -- Camera recoil
+SWEP.RecoilKickDamping = 70.151 -- Camera recoil damping
+SWEP.RecoilKickAffectPitch = nil -- thing for eft, set to true if you want camera go up (only visually) as recoil increases, SWEP.Recoil * SWEP.RecoilKick = effect of this
+
+
 -------------------------- SPREAD
 
-SWEP.Spread = 0.05
+SWEP.Spread = 0.001
 
 -------------------------- HANDLING
 
@@ -138,8 +163,8 @@ SWEP.FreeAimRadiusMultSights = 0
 
 SWEP.SwayMultSights = 0.1
 
-SWEP.AimDownSightsTime = 0.32 -- How long it takes to go from hip fire to aiming down sights.
-SWEP.SprintToFireTime = 0.34 -- How long it takes to go from sprinting to being able to fire.
+SWEP.AimDownSightsTime = 0.7 -- How long it takes to go from hip fire to aiming down sights.
+SWEP.SprintToFireTime = 0.5 -- How long it takes to go from sprinting to being able to fire.
 
 SWEP.SpeedMult = 0.94
 SWEP.SpeedMultSights = 0.75
@@ -148,8 +173,8 @@ SWEP.SpeedMultCrouch = 1
 
 -------------------------- TRACERS
 
-SWEP.TracerNum = 1 -- Tracer every X
-SWEP.TracerColor = Color(255, 225, 200) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
+SWEP.TracerNum = 5 -- Tracer every X
+SWEP.TracerColor = Color(255, 0, 0) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
 
 -------------------------- POSITIONS
 
@@ -179,8 +204,8 @@ SWEP.NearWallAng = Angle(20, -10, -10)
 SWEP.MovingPos =  Vector(0, -0.5, -0.5)
 SWEP.MovingAng =  Angle(0, 0, 2)
 
-SWEP.ViewModelFOVBase = 70
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -0.5)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.CrouchPos = Vector(0, -1, -1)
@@ -208,7 +233,7 @@ SWEP.AnimDraw = false
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_akm_1p" -- Used for some muzzle effects.
 
 SWEP.ShellModel = "models/weapons/ins/shells/762x39.mdl"
 SWEP.ShellCorrectAng = Angle(0, 5, 0)

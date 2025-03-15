@@ -1,8 +1,8 @@
 AddCSLuaFile()
 
 ENT.Type 				= "anim"
-ENT.Base 				= "arc9_proj_base"
-ENT.PrintName 			= "RPG Rocket"
+ENT.Base 				= "arc9_ins2_proj_base"
+ENT.PrintName 			= "RPG-7 Rocket"
 
 ENT.Spawnable 			= false
 ENT.CollisionGroup = COLLISION_GROUP_PROJECTILE
@@ -14,15 +14,14 @@ ENT.Defused = false
 ENT.SphereSize = 1
 ENT.PhysMat = "grenade"
 
-ENT.SmokeTrail = true
-ENT.SmokeTrailMat = "effects/fas_smoke_beam"
-ENT.SmokeTrailSize = 400
-ENT.SmokeTrailTime = 7
+ENT.SmokeTrail = false
+ENT.RocketTrail = true -- leaves trail of a particle effct
 
 ENT.Boost = 3500
 ENT.Flare = true
 
 ENT.LifeTime = 20
+ENT.SafetyFuse = 0.5
 
 ENT.ImpactDamage = nil
 ENT.ExplodeOnImpact = true
@@ -108,18 +107,18 @@ function ENT:Detonate(impact)
             filter = self,
             mask = MASK_WATER
         })
-        ParticleEffect("explosion_water", tr2.HitPos + Vector(0, 0, 8), Angle(0, 0, 0), nil)
+        ParticleEffect("ins_water_explosion", tr2.HitPos + Vector(0, 0, 8), Angle(0, 0, 0), nil)
 
         // Overpressure radius
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), 250, 200)
 
-        self:EmitSound("weapons/at4/at4rpg_water_detonate_0" .. math.random(1, 3) .. ".wav", 100)
-        self:EmitSound("weapons/at4/at4rpg_water_detonate_dist_0" .. math.random(1, 3) .. ".wav", 130)
+        self:EmitSound("weapons/at4/at4rpg_water_detonate_0" .. math.random(1, 3) .. ".wav", 700)
+        self:EmitSound("weapons/at4/at4rpg_water_detonate_dist_0" .. math.random(1, 3) .. ".wav", 25000)
     else
         if impact.TheirSurfaceProps == 2500 then
-            ParticleEffect("explosion_m79_body", self:GetPos(), (-self.LastHitNormal):Angle(), nil)
+            ParticleEffect("ins_rpg_explosion", self:GetPos(), (-self.LastHitNormal):Angle(), nil)
         else
-            ParticleEffect("explosion_m79", self:GetPos(), (-self.LastHitNormal):Angle(), nil)
+            ParticleEffect("ins_rpg_explosion", self:GetPos(), (-self.LastHitNormal):Angle(), nil)
         end
 
         // Overpressure radius
@@ -127,9 +126,9 @@ function ENT:Detonate(impact)
         // Shrapnel radius
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), 500, 500)
 
-        self:EmitSound("weapons/at4/bazooka/at4rpg_detonate_0" .. math.random(1, 3) .. ".wav", 125)
-        self:EmitSound("weapons/at4/at4rpg_detonate_dist_0" .. math.random(1, 3) .. ".wav", 150)
-        self:EmitSound("weapons/at4/at4rpg_detonate_far_dist_0" .. math.random(1, 3) .. ".wav", 175)
+        self:EmitSound("weapons/at4/at4rpg_detonate_0" .. math.random(1, 3) .. ".wav", 1000)
+        self:EmitSound("weapons/at4/at4rpg_detonate_dist_0" .. math.random(1, 3) .. ".wav", 2500)
+        self:EmitSound("weapons/at4/at4rpg_detonate_far_dist_0" .. math.random(1, 3) .. ".wav", 1000)
     end
 
     if SERVER then
@@ -144,7 +143,7 @@ function ENT:Detonate(impact)
             Src = self:GetPos(),
             Callback = function(att, tr, dmg)
                 if self.Scorch then
-                    util.Decal("Scorch", tr.StartPos, tr.HitPos - (tr.HitNormal * 16), self)
+                    util.Decal("scorch_explosive", tr.StartPos, tr.HitPos - (tr.HitNormal * 16), self)
                 end
             end
         })

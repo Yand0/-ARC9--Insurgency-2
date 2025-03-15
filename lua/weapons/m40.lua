@@ -11,11 +11,11 @@ SWEP.PrintName = "M40A1"
 SWEP.Class = "Sniper Rifle"
 
 SWEP.Trivia = {
-    Manufacturer = "Tula Arms Plant",
-    Calibre = "7.92x54mmR",
+    Manufacturer = "Remington",
+    Calibre = "7.62×51mm",
     Mechanism = "Bolt Action",
-    Origin = "Russian Empire",
-    Year = "1891"
+    Origin = "United States",
+    Year = "1970"
 }
 
 SWEP.Credits = {
@@ -23,14 +23,14 @@ SWEP.Credits = {
     Assets = "New World Interactive",
 }
 
-SWEP.Description = [[Standard bolt-action rifle used by German forces during the Second World War.]]
+SWEP.Description = [[M40A1 rifle is a bolt-action, internal magazine-fed sniper used by the United States Marine Corps.]]
 
 SWEP.ViewModel = "models/weapons/ins/m40/v_m40a1.mdl"
 SWEP.WorldModel = "models/weapons/w_snip_scout.mdl"
 
 SWEP.ViewModelFOVBase = 60
 
-SWEP.Slot = 3
+SWEP.Slot = 2
 
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
@@ -93,7 +93,7 @@ SWEP.ReloadInSights = false -- This weapon can aim down sights while reloading.
 SWEP.BarrelLength = 32
 
 SWEP.ShotgunReload = true
-SWEP.HybridReload = true
+SWEP.HybridReload = false
 
 SWEP.DryFireDelay = 0.25
 -------------------------- FIREMODES
@@ -159,12 +159,12 @@ SWEP.ExitSightsSound = "universal/uni_ads_out_01.wav"
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_akm_1p" -- Used for some muzzle effects.
 
 SWEP.AfterShotEffect = "arc9_aftershoteffect"
 SWEP.AfterShotParticle = nil -- Particle to spawn after shooting
 
-SWEP.ShellModel = "models/weapons/ins/shells/762x54.mdl"
+SWEP.ShellModel = "models/weapons/ins/shells/762x51.mdl"
 SWEP.ShellScale = 1
 
 SWEP.ShellSmoke = true
@@ -178,12 +178,6 @@ SWEP.MuzzleEffectQCA = 1 -- QC Attachment that controls muzzle effect.
 SWEP.CaseEffectQCA = 3 -- QC Attachment for shell ejection.
 SWEP.CamQCA = 7
 SWEP.CamCoolView = true -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
-
-SWEP.BulletBones = {
-    [0] = "K98_Reload_Round",
-    [1] = "K98_Bullet_1",
-    [2] = "K98_Bullet_2",
-}
 
 -------------------------- POSITIONS
 
@@ -199,8 +193,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, 15),
 }
 
-SWEP.ViewModelFOVBase = 70
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -1)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.MovingPos = Vector(0, -0.5, -0.5)
@@ -323,7 +317,7 @@ SWEP.Animations = {
         {t = 19 / 35.5, s = path .. "boltrelease.wav"},
         {t = 27 / 35.5, s = path .. "boltback.wav"},
     } },
-    ["reload_empty"] = { Source = "base_reload_start", Mult = 1, EjectAt = 0.85, EventTable = {
+    ["reload_start_empty"] = { Source = "base_reload_start", Mult = 1, EjectAt = 0.85, EventTable = {
         {t = 19 / 35.5, s = path .. "boltrelease.wav"},
         {t = 27 / 35.5, s = path .. "boltback.wav"},
     } },

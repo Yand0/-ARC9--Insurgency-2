@@ -1,14 +1,13 @@
 AddCSLuaFile()
 
 ENT.Type 				= "anim"
-ENT.Base 				= "arc9_proj_base"
+ENT.Base 				= "arc9_ins2_nade_base"
 ENT.PrintName 			= "M67"
 
 ENT.Spawnable 			= false
 ENT.CollisionGroup = COLLISION_GROUP_PROJECTILE
 
 ENT.Model = "models/weapons/ins/m67/w_m67.mdl"
-ENT.SphereSize = 6
 ENT.PhysMat = "grenade"
 
 ENT.LifeTime = 5
@@ -39,24 +38,24 @@ function ENT:Detonate()
             filter = self,
             mask = MASK_WATER
         })
-        ParticleEffect("water_explosion", tr2.HitPos + Vector(0, 0, 8), Angle(0, 0, 0), nil)
+        ParticleEffect("ins_water_explosion", tr2.HitPos + Vector(0, 0, 8), Angle(0, 0, 0), nil)
 
         // Overpressure radius
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), 512, 300)
 
         self:EmitSound("weapons/m67/water/m67_water_detonate_0" .. math.random(1, 3) .. ".wav", 100)
-        self:EmitSound("weapons/m67/water/m67_water_detonate_dist_0" .. math.random(1, 3) .. ".wav", 130)
+        self:EmitSound("weapons/m67/water/m67_water_detonate_dist_0" .. math.random(1, 3) .. ".wav", 300)
     else
-        ParticleEffect("explosion_he_grenade", self:GetPos(), Angle(0, 0, 0), nil)
+        ParticleEffect("ins_rpg_explosion", self:GetPos(), Angle(0, 0, 0), nil)
 
         // Overpressure radius
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), 256, 250)
         // Shrapnel radius
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), 512, 125)
 
-        self:EmitSound("weapons/m67/m67_detonate_0" .. math.random(1, 3) .. ".wav", 125)
-        self:EmitSound("weapons/m67/m67_detonate_dist_0" .. math.random(1, 3) .. ".wav", 150)
-        self:EmitSound("weapons/m67/m67_detonate_far_dist_0" .. math.random(1, 3) .. ".wav", 175)
+        self:EmitSound("weapons/m67/m67_detonate_0" .. math.random(1, 3) .. ".wav", 100)
+        self:EmitSound("weapons/m67/m67_detonate_dist_0" .. math.random(1, 3) .. ".wav", 300)
+        self:EmitSound("weapons/m67/m67_detonate_far_dist_0" .. math.random(1, 3) .. ".wav", 500)
     end
 
     if SERVER then
@@ -75,7 +74,7 @@ function ENT:Detonate()
             Src = self:GetPos(),
             Callback = function(att, tr, dmg)
                 if self.Scorch then
-                    util.Decal("Scorch", tr.StartPos, tr.HitPos - (tr.HitNormal * 16), self)
+                    util.Decal("scorch_explosive", tr.StartPos, tr.HitPos - (tr.HitNormal * 16), self)
                 end
             end
         })

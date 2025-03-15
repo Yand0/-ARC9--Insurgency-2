@@ -54,7 +54,7 @@ SWEP.FuseTimer = 4
 
 SWEP.ThrowForceMin = 350
 SWEP.ThrowForceMax = 1000
-SWEP.TossForce = 400
+SWEP.TossForce = 500
 
 SWEP.ThrowChargeTime = 1
 
@@ -99,7 +99,7 @@ SWEP.HasSights = false
 SWEP.SprintAng = Angle(0, -45, 0)
 SWEP.SprintPos = Vector(0, 0, 0)
 
-SWEP.ViewModelFOVBase = 55
+SWEP.ViewModelFOVBase = 70
 SWEP.ActivePos = Vector(0, 0, 0)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
@@ -143,13 +143,13 @@ SWEP.Animations = {
     ["draw"] = {
         Source = "draw",
         EventTable = {
-            {s = common .. "grenade_draw_01", t = 0}
+            {s = common .. "grenade_draw_01.wav", t = 0}
         }
     },
     ["holster"] = {
         Source = "holster",
         EventTable = {
-            {s = common .. "grenade_holster", t = 0}
+            {s = common .. "grenade_holster.wav", t = 0}
         }
     },
     ["pullpin"] = {

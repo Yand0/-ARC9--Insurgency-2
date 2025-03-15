@@ -21,7 +21,7 @@ SWEP.Trivia = {
 
 SWEP.Credits = {
     Author = "Ethan, Yando, ProstoMouse",
-    Assets = "Insurgency 2",
+    Assets = "New World Interactive",
 }
 
 SWEP.Description = [[The AK-74 is an assault rifle designed by small arms designer Mikhail Kalashnikov in 1974 as a successor to the AKM.]]
@@ -58,12 +58,12 @@ SWEP.RicochetChance = 0.25
 
 SWEP.BodyDamageMults = {
     [HITGROUP_HEAD] = 2.5,
-    [HITGROUP_CHEST] = 1.5,
-    [HITGROUP_STOMACH] = 1.1,
-    [HITGROUP_LEFTARM] = 1,
-    [HITGROUP_RIGHTARM] = 1,
-    [HITGROUP_LEFTLEG] = 0.9,
-    [HITGROUP_RIGHTLEG] = 0.9,
+    [HITGROUP_CHEST] = 0.5,
+    [HITGROUP_STOMACH] = 0.4,
+    [HITGROUP_LEFTARM] = 0.3,
+    [HITGROUP_RIGHTARM] = 0.3,
+    [HITGROUP_LEFTLEG] = 0.3,
+    [HITGROUP_RIGHTLEG] = 0.3,
 }
 
 -------------------------- PHYS BULLET BALLISTICS
@@ -95,16 +95,15 @@ SWEP.Firemodes = {
     }
 }
 
-SWEP.BarrelLength = 24
+SWEP.BarrelLength = 22
 
 -------------------------- RECOIL
+SWEP.Recoil = 1.5
 
--- General recoil multiplier
-SWEP.Recoil = 0.95
+SWEP.RecoilUp = 1.5 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 1.5 -- Multiplier for vertical recoil
 
--- These multipliers affect the predictible recoil by making the pattern taller, shorter, wider, or thinner.
-SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 1 -- Multiplier for vertical recoil
+SWEP.RecoilPatternDrift = 5
 
 SWEP.RecoilMultHipFire = 0.75
 
@@ -173,8 +172,8 @@ SWEP.SpeedMultCrouch = 1
 
 -------------------------- TRACERS
 
-SWEP.TracerNum = 1 -- Tracer every X
-SWEP.TracerColor = Color(255, 225, 200) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
+SWEP.TracerNum = 5 -- Tracer every X
+SWEP.TracerColor = Color(255, 0, 0) -- Color of tracers. Only works if tracer effect supports it. For physical bullets, this is compressed down to 9-bit color.
 
 -------------------------- POSITIONS
 
@@ -204,15 +203,15 @@ SWEP.NearWallAng = Angle(20, -10, -10)
 SWEP.MovingPos =  Vector(0, -0.5, -0.5)
 SWEP.MovingAng =  Angle(0, 0, 2)
 
-SWEP.ViewModelFOVBase = 70
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -0.5)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.CrouchPos = Vector(0, -1, -1)
 SWEP.CrouchAng = Angle(0, 0, 0)
 
 SWEP.CustomizeAng = Angle(90, 0, 0)
-SWEP.CustomizePos = Vector(10, 25, 5)
+SWEP.CustomizePos = Vector(12, 25, 5)
 SWEP.CustomizeSnapshotFOV = 100
 
 SWEP.BipodPos = Vector(0, 0, 0)
@@ -233,7 +232,7 @@ SWEP.AnimDraw = false
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_ak74_1p" -- Used for some muzzle effects.
 
 SWEP.ShellModel = "models/weapons/ins/shells/545x39.mdl"
 SWEP.ShellCorrectAng = Angle(0, 5, 0)
@@ -286,10 +285,6 @@ SWEP.Animations = {
             {s = path .. "fireselect_1.wav", t = 20 / 30},
             {s = path .. "boltback.wav", t = 35 / 30},
             {s = path .. "boltrelease.wav", t = 45 / 30},
-            {s = path .. "check.wav", t = 61 / 30},
-            {s = path .. "forwardassist.wav", t = 107 / 30},
-            {s = path .. "dustcover.wav", t = 117 / 30},
-            {s = path .. "selector.wav", t = 144 / 30},
         },
         IKTimeLine = {
             {
@@ -377,7 +372,6 @@ SWEP.Animations = {
         MagSwapTime = 39 / 30,
         EventTable = {
             {s = path .. "magout.wav", t = 16 / 30},
-            {s = ARC9INS2.MagPouch, t = 39 / 30},
             {s = path .. "magin.wav", t = 61 / 30},
         },
         IKTimeLine = {
@@ -532,17 +526,51 @@ SWEP.Attachments = {
 		DefaultName = "6P20",
         Category = {"ins2_akhandguard"},
         Bone = "A_Underbarrel",
-		Installed = "ins_ak74handguard",
         Pos = Vector(-4.2, -1.35, 0),
         Ang = Angle(0, 0, 90),
 		Integral = true
     },
 	{
-	    PrintName = "Optic",
-		DefaultName = "Irons",
+	    PrintName = "Dustcover",
+		DefaultName = "6P1",
         Bone = "A_Optic",
         Pos = Vector(0, 0, 0),
         Ang = Angle(90, 90, 0),
-        Category = {"ins2_akoptics"},
+        Category = {"ins2_akdustcover"},
+	},
+	{
+	    PrintName = "RIS Optics",
+		DefaultName = "RIS",
+        Bone = "A_Optic",
+        Pos = Vector(0, 0, 0),
+		RequireElements = {"ins2_akdustcover"},
+        Ang = Angle(90, 90, 0),
+        Category = {"ins2_akrisoptics"},
+	},
+	{
+	    PrintName = "RIS Right",
+		DefaultName = "Rail",
+        Bone = "A_LaserFlashlight",
+        Pos = Vector(-4, -1.1, 0.7),
+		RequireElements = {"ins_ak74rishandguard"},
+        Ang = Angle(0, 0, 0),
+        Category = {"ins2_m4railleftright"},
+	},
+	{
+	    PrintName = "RIS Left",
+		DefaultName = "Rail",
+        Bone = "A_LaserFlashlight",
+        Pos = Vector(-4, 1, 0.7),
+		RequireElements = {"ins_ak74rishandguard"},
+        Ang = Angle(-180, -180, 0),
+        Category = {"ins2_m4railleftright"},
+	},
+	{
+	    PrintName = "AK-74 Barrel Mount",
+		DefaultName = "Barrel Mount",
+        Bone = "A_LaserFlashlight",
+        Pos = Vector(0, -0.25, 0),
+        Ang = Angle(0, 0, 0),
+        Category = {"ins2_akflashlaser"},
 	},
 }

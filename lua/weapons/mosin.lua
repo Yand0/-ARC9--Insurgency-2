@@ -23,14 +23,14 @@ SWEP.Credits = {
     Assets = "New World Interactive",
 }
 
-SWEP.Description = [[Standard bolt-action rifle used by German forces during the Second World War.]]
+SWEP.Description = [[Mosin Nagant is a five-shot, bolt-action, internal magazine-fed, military rifle developed from 1882 to 1891, and used by the armed forces of the Russian Empire, the Soviet Union and various other nations.]]
 
 SWEP.ViewModel = "models/weapons/ins/mosin/v_mosin.mdl"
 SWEP.WorldModel = "models/weapons/w_snip_scout.mdl"
 
 SWEP.ViewModelFOVBase = 60
 
-SWEP.Slot = 3
+SWEP.Slot = 2
 
 SWEP.MirrorVMWM = true
 SWEP.WorldModelOffset = {
@@ -39,7 +39,7 @@ SWEP.WorldModelOffset = {
     Ang = Angle(-5, 0, 180),
     Scale = 1
 }
-SWEP.NoTPIKVMPos = true
+SWEP.NoTPIKVMPos = false
 
 SWEP.DefaultBodygroups = "0500000000000000000000"
 SWEP.DefaultSkin = 1
@@ -93,7 +93,7 @@ SWEP.ReloadInSights = false -- This weapon can aim down sights while reloading.
 SWEP.BarrelLength = 32
 
 SWEP.ShotgunReload = true
-SWEP.HybridReload = true
+SWEP.HybridReload = false
 
 SWEP.DryFireDelay = 0.25
 -------------------------- FIREMODES
@@ -159,7 +159,7 @@ SWEP.ExitSightsSound = "universal/uni_ads_out_01.wav"
 
 -------------------------- EFFECTS
 
-SWEP.MuzzleParticle = "muzzleflash_5" -- Used for some muzzle effects.
+SWEP.MuzzleParticle = "muzzleflash_akm_1p" -- Used for some muzzle effects.
 
 SWEP.AfterShotEffect = "arc9_aftershoteffect"
 SWEP.AfterShotParticle = nil -- Particle to spawn after shooting
@@ -179,12 +179,6 @@ SWEP.CaseEffectQCA = 3 -- QC Attachment for shell ejection.
 SWEP.CamQCA = 7
 SWEP.CamCoolView = true -- Enable to use procedural camera movement. Set CamQCA to muzzle QCA or something.
 
-SWEP.BulletBones = {
-    [0] = "K98_Reload_Round",
-    [1] = "K98_Bullet_1",
-    [2] = "K98_Bullet_2",
-}
-
 -------------------------- POSITIONS
 
 SWEP.IronSights = {
@@ -199,8 +193,8 @@ SWEP.SightMidPoint = { -- Where the gun should be at the middle of it's irons
     Ang = Angle(0, 0, 15),
 }
 
-SWEP.ViewModelFOVBase = 70
-SWEP.ActivePos = Vector(0, 0, 0)
+SWEP.ViewModelFOVBase = 80
+SWEP.ActivePos = Vector(0, 0, -1)
 SWEP.ActiveAng = Angle(0, 0, 0)
 
 SWEP.MovingPos = Vector(0, -0.5, -0.5)
@@ -311,19 +305,19 @@ SWEP.Animations = {
         {t = 0 / 30, s = "universal/uni_weapon_draw_01.wav"},
     } },
     ["holster"] = { Source = "base_holster", EventTable = {
-        {t = 0, s = ARC9DOI.Holster},
+        {t = 0 / 30, s = "universal/uni_weapon_holster.wav"},
     } },
     ["draw_empty"] = { Source = "base_draw_empty", EventTable = {
-        {t = 0, s = ARC9DOI.Draw},
+        {t = 0 / 30, s = "universal/uni_weapon_draw_01.wav"},
     } },
     ["holster_empty"] = { Source = "base_holster_empty", EventTable = {
-        {t = 0, s = ARC9DOI.Holster},
+        {t = 0 / 30, s = "universal/uni_weapon_holster.wav"},
     } },
     ["reload_start"] = { Source = "reload_start", Mult = 0.75, EventTable = {
         {t = 19 / 35.5, s = path .. "boltrelease.wav"},
         {t = 27 / 35.5, s = path .. "boltback.wav"},
     } },
-    ["reload_empty"] = { Source = "reload_start", Mult = 1, EjectAt = 0.85, EventTable = {
+    ["reload_start_empty"] = { Source = "reload_start", Mult = 1, EjectAt = 0.85, EventTable = {
         {t = 19 / 35.5, s = path .. "boltrelease.wav"},
         {t = 27 / 35.5, s = path .. "boltback.wav"},
     } },
@@ -340,12 +334,20 @@ SWEP.Animations = {
 
 SWEP.Attachments = {
     {
-        PrintName = "OPTIC",
-        Category = "ins_sniperoptics",
+        PrintName = "Mount",
+        Category = "ins2_mosinmount",
         Bone = "A_Optic",
-        Pos = Vector(0.575, -5.1, 3.9),
-        Ang = Angle(0, -90, 0),
-        CorrectiveAng = Angle(-0.25, 0.334, 0),
-        MergeSlots = {2}
+        Pos = Vector(0, 0, 0),
+        Ang = Angle(90, 0, 90),
+        CorrectiveAng = Angle(0, 0, 0),
+    },
+	{
+        PrintName = "Optic",
+        Category = "ins2_mosinoptics",
+        Bone = "A_Optic",
+        Pos = Vector(0, 0, 0),
+        Ang = Angle(90, 0, 90),
+        CorrectiveAng = Angle(0, 0, 0),
+		RequireElements = {"ins2_mosinmount"},
     },
 }
