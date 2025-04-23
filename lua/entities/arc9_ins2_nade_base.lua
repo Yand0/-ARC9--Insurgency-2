@@ -107,7 +107,7 @@ if SERVER then
             if data.DeltaTime > 0.1 then
                 if self.BounceSounds then
                     self:EmitSound(self.BounceSounds[math.random(1, #self.BounceSounds)], 75)
-                else
+                elseif self.BounceSound then
                     self:EmitSound(self.BounceSound, 75)
                 end
             end
@@ -171,7 +171,7 @@ else
         self:DrawModel()
     end
 
-    function ENT:DrawTranslucent(flags) -- doesn't draw wtf? or this is something with my addons
-        self:Draw(flags)    -- fix from wiki anyway
+    function ENT:DrawTranslucent(flags)
+        self:Draw(flags)
     end
 end

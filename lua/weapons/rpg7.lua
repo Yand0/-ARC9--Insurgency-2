@@ -45,7 +45,7 @@ SWEP.NoTPIKVMPos = false
 SWEP.DefaultBodygroups = ""
 SWEP.DefaultSkin = 0
 
-SWEP.CantPeek = false
+SWEP.CantPeek = true
 SWEP.NoAimAssist = true
 
 -------------------------- DAMAGE PROFILE

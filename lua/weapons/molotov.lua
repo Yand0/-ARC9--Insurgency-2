@@ -11,10 +11,9 @@ SWEP.PrintName = "Molotov Cocktail"
 SWEP.Class = "Grenade"
 
 SWEP.Trivia = {
-    Manufacturer = "Universal Match Corp.",
-    Mechanism = "Pyrotechnic Fuze",
-    Origin = "United States of America",
-    Year = "1942"
+    Manufacturer = "You",
+    Origin = "Finland",
+    Year = "1939"
 }
 
 SWEP.Credits = {
@@ -22,7 +21,7 @@ SWEP.Credits = {
     Assets = "New World Interactive",
 }
 
-SWEP.Description = [[The M18 Smoke Grenade is a US Army grenade used as a screening device for unit maneuvering.]]
+SWEP.Description = [[A Molotov cocktail is a bottle-based improvised incendiary weapon]]
 
 SWEP.ViewModel = "models/weapons/ins/molotov/v_molotov.mdl"
 SWEP.WorldModel = "models/weapons/w_eq_fraggrenade.mdl"
@@ -49,15 +48,13 @@ SWEP.Throwable = true
 SWEP.Tossable = true
 SWEP.ThrowAnimSpeed = 1
 
-SWEP.FuseTimer = 4
-
 SWEP.ThrowForceMin = 250
 SWEP.ThrowForceMax = 1000
 SWEP.TossForce = 500
 
 SWEP.ThrowChargeTime = 1
 
-SWEP.ThrowTumble = true
+SWEP.ThrowTumble = false
 
 -------------------------- MAGAZINE
 
@@ -148,7 +145,7 @@ SWEP.Animations = {
     ["holster"] = {
         Source = "base_holster",
         EventTable = {
-            {s = "universal/molotov_weapon_holster.wav", t = 0}
+            {s = "universal/molotov_weapon_holster_01.wav", t = 0}
         }
     },
     ["pullpin"] = {

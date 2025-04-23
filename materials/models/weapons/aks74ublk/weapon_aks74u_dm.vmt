@@ -1,0 +1,22 @@
+"VertexLitGeneric"
+{
+	"$basetexture"					"models\weapons\aks74ublk\weapon_aks74u_dm"
+	"$bumpmap" 						"models\weapons\aks74ublk\weapon_aks74u_nm"
+                "$selfillum"                                                               "1"
+	"$color"				    	"[1 1 1]"
+	
+	$normalmapalphaenvmapmask 		"1"
+
+	 $phongtint						"[.6 .8 1]"
+
+	$envmap 						env_cubemap
+	$envmaptint 					"[.085 .085 .085  ]"
+
+	$phong 							"1"
+	//$PhongAlbedoTint 				"0"	
+	//$BasemapLuminancePhongMask	"1"
+	
+	$phongexponenttexture 			"models\weapons\aks74blku\weapon_aks74u_exp"
+	$phongboost 					"0.1"
+	$phongfresnelranges				"[0.5 1 3]"
+}

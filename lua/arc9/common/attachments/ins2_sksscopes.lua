@@ -2,10 +2,10 @@ local ATT = {}
 
 ATT = {}
 
-ATT.PrintName = "Mosin Nagant RIS platform"
+ATT.PrintName = "SKS RIS platform"
 ATT.CompactName = "RIS Mount"
 ATT.Icon = Material("entities/mosinmount.png", "mips smooth")
-ATT.Description = [[Makes Mosin to be able to mount optics on RIS base]]
+ATT.Description = [[Makes SKS to be able to mount optics on RIS base]]
 ATT.MenuCategory = "ARC9 - Insurgency 2"
 ATT.Category = "ins2_sksris"
 
@@ -28,21 +28,23 @@ ATT.ModelOffset = Vector(-0.6, 0, 0.8)
 
 ATT.RTScope = true
 ATT.RTScopeSubmatIndex = 1
-ATT.RTScopeFOV = 1
 ATT.RTScopeColorable = false
-ATT.RTScopeShadowIntensity = 0.2
+ATT.RTScopeShadowIntensity = 3000
+ATT.RTScopeMagnification = 6
+ATT.ScopeScreenRatio = 700/1080
+ATT.RTScopeNoPP = false
 
 ATT.Sights = {
     {
         Pos = Vector(-2.6, -3, 2.4),
         Ang = Angle(0, 0, 0),
-		ViewModelFOV = 50,
+        ViewModelFOV = 60,
+        Magnification = 1.15,
     },
 }
 
-ATT.ScopeScreenRatio = 1.1
-
-ATT.AimDownSightsTimeMult = 3
+ATT.AimDownSightsTimeMult = 2
+ATT.SwayMultSights = 1.6
 
 ARC9.LoadAttachment(ATT, "ins2_6xsksoptic")
 
@@ -51,7 +53,7 @@ ATT = {}
 ATT.PrintName = "PO 4x24"
 ATT.CompactName = "PO 4x24"
 ATT.Icon = Material("entities/po424.png", "mips smooth")
-ATT.Description = [[Unknown company's 6X hunting scope]]
+ATT.Description = [[Russian 4x optic sight]]
 ATT.MenuCategory = "ARC9 - Insurgency 2"
 ATT.Category = "ins2_sksrisscopes"
 
@@ -60,20 +62,22 @@ ATT.ModelOffset = Vector(-0.6, 0, 0.8)
 
 ATT.RTScope = true
 ATT.RTScopeSubmatIndex = 1
-ATT.RTScopeFOV = 4
 ATT.RTScopeColorable = false
 ATT.RTScopeShadowIntensity = 0.2
+ATT.RTScopeMagnification = 3.5
+ATT.ScopeScreenRatio = 425/1080
 
 ATT.Sights = {
     {
         Pos = Vector(-2.58, -5.9, 2.55),
         Ang = Angle(0, 0, 0),
-		ViewModelFOV = 50,
+		ViewModelFOV = 60,
+        Magnification = 1.15,
+        IgnoreExtra = true
     },
 }
 
-ATT.ScopeScreenRatio = 1
-
 ATT.AimDownSightsTimeMult = 3
+ATT.SwayMultSights = 1.7
 
 ARC9.LoadAttachment(ATT, "ins2_424sksoptic")

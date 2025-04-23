@@ -100,7 +100,7 @@ function ENT:Initialize()
 
         if self.IsRocket then
             phys:EnableGravity(false)
-			phys:SetMass(5)
+            phys:SetMass(5)
         end
     end
 
@@ -111,25 +111,25 @@ function ENT:Initialize()
     if self.AudioLoop then
         self.LoopSound = CreateSound(self, self.AudioLoop)
         self.LoopSound:Play()
-	   if self:GetNWBool("HasDetonated") then
-       self.LoopSound:Stop()
-       end
+        if self:GetNWBool("HasDetonated") then
+            self.LoopSound:Stop()
+        end
     end
 
     if self.InstantFuse then
         self.ArmTime = CurTime()
         self.Armed = true
     end
-	
+    
     if self.RocketTrail then
-	   ParticleEffectAttach(self.RocketTrailParticle, PATTACH_ABSORIGIN_FOLLOW, self, 0)
-	   if self:GetNWBool("HasDetonated") then
-       self.RocketTrail = false
-       end
+        ParticleEffectAttach(self.RocketTrailParticle, PATTACH_ABSORIGIN_FOLLOW, self, 0)
+        if self:GetNWBool("HasDetonated") then
+            self.RocketTrail = false
+        end
     end
-	
-	self.HitSkybox = false
-    self:OnInitialize()
+    
+    self.HitSkybox = false
+    -- Удален вызов OnInitialize()
 end
 
 if SERVER then
@@ -193,27 +193,6 @@ if SERVER then
                 local target = self.ShootEntData.Target
                 if target.UnTrackable then self.ShootEntData.Target = nil end
 
-                -- if self.TopAttack then
-                --     local tpos = target:GetPos() + Vector(0, 0, 5000)
-                --     if self.SpawnTime + self.TopAttackTime - 1 < CurTime() or self.TopAttackReached then
-                --         tpos = target:GetPos()
-                --     end
-                --     local dir = (tpos - self:GetPos()):GetNormalized()
-                --     local dist = (tpos - self:GetPos()):Length()
-                --     local ang = dir:Angle()
-
-                --     local p = self:GetAngles().p
-                --     local y = self:GetAngles().y
-
-                --     p = math.ApproachAngle(p, ang.p, FrameTime() * self.SteerSpeed)
-                --     y = math.ApproachAngle(y, ang.y, FrameTime() * self.SteerSpeed)
-
-                --     self:SetAngles(Angle(p, y, 0))
-
-                --     if dist <= 1024 then
-                --         self.TopAttackReached = true
-                --     end
-                -- else
                 local tpos = target:EyePos()
                 if self.TopAttack and !self.TopAttackReached then
                     tpos = tpos + Vector(0, 0, self.TopAttackHeight)
@@ -237,12 +216,10 @@ if SERVER then
                     y = math.ApproachAngle(y, ang.y, FrameTime() * self.SteerSpeed)
 
                     self:SetAngles(Angle(p, y, 0))
-                    -- self:SetVelocity(dir * 15000)
                 elseif self.NoReacquire then
                     self.ShootEntData.Target = nil
                     drunk = true
                 end
-                -- end
             else
                 drunk = true
             end
@@ -299,10 +276,8 @@ if SERVER then
 
         if self:WaterLevel() > 0 then
             util.Effect( "WaterSurfaceExplosion", effectdata )
-            --self:EmitSound("weapons/underwater_explode3.wav", 125, 100, 1, CHAN_AUTO)
         else
             util.Effect( self.ExplosionEffect, effectdata)
-            --self:EmitSound("phx/kaboom.wav", 125, 100, 1, CHAN_AUTO)
         end
 
         util.BlastDamage(self, IsValid(self:GetOwner()) and self:GetOwner() or self, self:GetPos(), self.Radius, self.DamageOverride or self.Damage)
@@ -329,7 +304,6 @@ if SERVER then
             })
         end
         self.Defused = true
-        -- self:Remove()
 
         SafeRemoveEntityDelayed(self, self.SmokeTrailTime)
         self:SetRenderMode(RENDERMODE_NONE)
@@ -362,7 +336,7 @@ if SERVER then
                 return
             end
 
-            timer.Simple(0, function()  -- to prevent "Changing collision rules within a callback is likely to cause crashes!" errors
+            timer.Simple(0, function()
                 if !self:IsValid() then return end
                 self:EmitSound("")
 
@@ -376,7 +350,6 @@ if SERVER then
             local effectdata = EffectData()
                 effectdata:SetOrigin( self:GetPos() )
 
-            -- simulate AP damage on vehicles, mainly simfphys
             tgt = colData.HitEntity
             while IsValid(tgt) do
                 if tgt.GetParent and IsValid(tgt:GetParent()) then
@@ -397,7 +370,7 @@ if SERVER then
             local dmg = DamageInfo()
             dmg:SetAttacker(IsValid(self:GetOwner()) and self:GetOwner() or self)
             dmg:SetInflictor(self)
-            dmg:SetDamageType(DMG_BLAST) -- helicopters
+            dmg:SetDamageType(DMG_BLAST)
             dmg:SetDamage(self.ImpactDamage)
             dmg:SetDamagePosition(colData.HitPos)
             dmg:SetDamageForce(self:GetForward() * self.ImpactDamage)
@@ -419,7 +392,6 @@ if SERVER then
         end
     end
 
-    -- Combine Helicopters are hard-coded to only take DMG_AIRBOAT damage
     hook.Add("EntityTakeDamage", "ARC9_HelicopterWorkaround", function(ent, dmginfo)
         if IsValid(ent:GetOwner()) and ent:GetOwner():GetClass() == "npc_helicopter" then ent = ent:GetOwner() end
         if ent:GetClass() == "npc_helicopter" and dmginfo:GetInflictor().HelicopterWorkaround then

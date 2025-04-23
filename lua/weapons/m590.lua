@@ -44,6 +44,8 @@ SWEP.NoTPIKVMPos = true
 SWEP.DefaultBodygroups = "0000000000000000000000"
 SWEP.DefaultSkin = 0
 
+SWEP.CantPeek = true
+
 -------------------------- DAMAGE PROFILE
 
 SWEP.DamageMax = 225 -- Damage done at point blank range
@@ -157,12 +159,11 @@ SWEP.VisualRecoilDampingConst = 40
 SWEP.VisualRecoilSpringMagnitude = 1
 
 SWEP.VisualRecoilCenter = Vector(4.07, 2, -1.3)
--------------------------- SPREAD
 
 -------------------------- SOUNDS
 
 SWEP.ShootVolume = 125
-SWEP.ShootVolumeActual = 1
+SWEP.ShootVolumeActual = 0.5
 SWEP.ShootPitch = 100
 SWEP.ShootPitchVariation = 0.05
 
@@ -170,10 +171,10 @@ SWEP.ShootSound = "weapons/m590/m590_fp.wav"
 SWEP.DistantShootSound = "weapons/m590/m590_dist.wav"
 
 SWEP.DryFireSound = "weapons/m590/m590_empty.wav"
-SWEP.DryFireSingleAction = false
+SWEP.DryFireSingleAction = true
 
-SWEP.EnterSightsSound = ARC9DOI.AimIn
-SWEP.ExitSightsSound = ARC9DOI.AimOut
+SWEP.EnterSightsSound = "universal/uni_ads_in_01.wav"
+SWEP.ExitSightsSound = "universal/uni_ads_out_01.wav"
 
 -------------------------- EFFECTS
 
@@ -252,6 +253,8 @@ SWEP.PeekAng = Angle(0, 0, 0)
 
 SWEP.HeightOverBore = 1
 
+SWEP.PeekMaxFOV = 70
+
 -------------------------- HoldTypes
 
 SWEP.HoldType = "ar2"
@@ -266,10 +269,10 @@ SWEP.NonTPIKAnimReload = ACT_HL2MP_GESTURE_RELOAD_AR2
 SWEP.AnimDraw = false
 SWEP.AnimMelee = ACT_GMOD_GESTURE_MELEE_SHOVE_2HAND
 
-SWEP.BulletBones = {
-    [1] = "Shell",
-	[2] = "Shell_2",
-	[3] = "Shell_3",
+SWEP.HideBones = {
+    "Shell",
+    "Shell_2",
+	"Shell_3"
 }
 
 local path = "weapons/m590/m590_"

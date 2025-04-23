@@ -168,7 +168,7 @@ SWEP.SpeedMult = 0.9
 -------------------------- SOUNDS
 
 SWEP.ShootVolume = 125
-SWEP.ShootVolumeActual = 1
+SWEP.ShootVolumeActual = 0.5
 SWEP.ShootPitch = 100
 SWEP.ShootPitchVariation = 0.05
 

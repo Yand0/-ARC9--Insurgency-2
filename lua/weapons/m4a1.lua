@@ -217,6 +217,8 @@ SWEP.CustomizeSnapshotFOV = 100
 
 SWEP.BipodPos = Vector(0, 0, 0)
 
+SWEP.PeekMaxFOV = 70
+
 -------------------------- HoldTypes
 
 SWEP.HoldType = "shotgun"
@@ -249,6 +251,12 @@ SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
 
+SWEP.ShootVolume = 125
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
+
+
 local path = "weapons/m4a1/m4a1_"
 local common = "universal/uni_"
 
@@ -256,6 +264,7 @@ local common = "universal/uni_"
 SWEP.ShootSound = path .. "fp.wav"
 SWEP.DistantShootSound = "^" .. path .. "dist.wav"
 SWEP.ShootSoundSilenced = path .. "suppressed_fp.wav"
+SWEP.DistantShootSoundSilenced = path .. "weapons/universal/null.wav"
 SWEP.DryFireSound = "weapons/ak74/ak74_empty.wav"
 
 SWEP.DryFireSingleAction = true
@@ -371,11 +380,13 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 60 / 30,
         EventTable = {
-            {s = ARC9INS2.Cloth_Movement, t = 0},
+            {s = common .. "sprint_start_01.wav", t = 2 / 30},
             {s = path .. "magrelease.wav", t = 10 / 30},
             {s = path .. "magout.wav", t = 16 / 30},
             {s = path .. "magain.wav", t = 58 / 30},
 			{s = path .. "hit.wav", t = 75 / 30},
+			{s = path .. "maghitrelease.wav", t = 76 / 30},
+			{s = common .. "lean_in_03.wav", t = 90 / 30},
         },
         IKTimeLine = {
             {
@@ -405,10 +416,13 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 29 / 30,
         EventTable = {
+		    {s = common .. "sprint_start_01.wav", t = 2 / 30},
             {s = path .. "magout.wav", t = 14 / 30},
             {s = path .. "magain.wav", t = 60 / 30},
             {s = path .. "hit.wav", t = 80 / 30},
+			{s = path .. "maghitrelease.wav", t = 81 / 30},
 			{s = path .. "boltarelease.wav", t = 105 / 30},
+			{s = common .. "lean_in_03.wav", t = 115 / 30},
         },
         IKTimeLine = {
             {
@@ -582,7 +596,7 @@ SWEP.Attachments = {
         Bone = "A_LaserFlashlight",
         Pos = Vector(-2, -0.2, 0),
         Ang = Angle(0, 0, 0),
-        Category = {"ins2_m4rail", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
+        Category = {"ins2_m4railcovers", "ins2_mk18railcovers", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
 	},
 	{
 	    PrintName = "RIS Left",
@@ -590,7 +604,7 @@ SWEP.Attachments = {
         Bone = "A_LaserFlashlight",
         Pos = Vector(-2, 2.2, 0),
         Ang = Angle(0, 0, 180),
-        Category = {"ins2_m4rail", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
+        Category = {"ins2_m4railcovers", "ins2_mk18railcovers", "ins2_m4railleftright", "ins2_m4railleftrighttop"},
 	},
 	{
 	    PrintName = "RIS Bottom",
@@ -598,7 +612,7 @@ SWEP.Attachments = {
         Bone = "A_Underbarrel",
         Pos = Vector(-5.5, -1.5, 1),
         Ang = Angle(0, 0, 0),
-        Category = {"ins2_m4underbarrel"},
+        Category = {"ins2_m4underbarrel", "ins2_mk18underbarrel"},
 	},
 	{
 	    PrintName = "RIS Top",
@@ -606,6 +620,14 @@ SWEP.Attachments = {
         Bone = "A_LaserFlashlight",
         Pos = Vector(-2, 1, -1.3),
         Ang = Angle(180, 180, 90),
-        Category = {"ins2_m4rail", "ins2_m4railleftrighttop"},
+        Category = {"ins2_m4railcovers", "ins2_mk18railcovers", "ins2_m4railleftrighttop"},
+	},
+	{
+	    PrintName = "Muzzle",
+		DefaultName = "Muzzle brake",
+        Bone = "Weapon",
+        Pos = Vector(0, 13, 2.55),
+        Ang = Angle(180, 90, 0),
+        Category = {"ins2_silencersar"},
 	},
 }

@@ -3,7 +3,7 @@ local ATT = {}
 ATT = {}
 
 ATT.PrintName = "AK-74 Handguard"
-ATT.CompactName = "6P20"
+ATT.CompactName = "Wooden handguard"
 ATT.Icon = Material("entities/ak74hg.png", "mips smooth")
 ATT.Description = [[Standard issue AK-74 handguard]]
 ATT.MenuCategory = "ARC9 - Insurgency 2"
@@ -21,6 +21,7 @@ ATT.Icon = Material("entities/ak74railhg.png", "mips smooth")
 ATT.Description = [[A custom handguard for AK series that allow to attach foregrips and tacticals]]
 ATT.MenuCategory = "ARC9 - Insurgency 2"
 ATT.Category = "ins2_akhandguard"
+ATT.SortOrder = 50
 
 ATT.Model = "models/weapons/ins/upgrades/a_railgrip_ak.mdl"
 
@@ -92,3 +93,61 @@ ATT.ToggleStats = {
 ATT.NoPeekCrosshair = false
 
 ARC9.LoadAttachment(ATT, "ins2_laserak")
+
+----------------------------------------------AKM
+
+ATT = {}
+
+ATT.PrintName = "AKM Handguard"
+ATT.CompactName = "Wooden handguard"
+ATT.Icon = Material("entities/akmhg.png", "mips smooth")
+ATT.Description = [[Standard issue AK-74 handguard]]
+ATT.MenuCategory = "ARC9 - Insurgency 2"
+ATT.Category = "ins2_akmhandguard"
+
+ATT.Model = "models/weapons/ins/upgrades/a_standard_akm.mdl"
+
+ARC9.LoadAttachment(ATT, "ins_akmshandguard")
+
+ATT = {}
+
+ATT.PrintName = "AKM Railed Handguard"
+ATT.CompactName = "RIS Handguard"
+ATT.Icon = Material("entities/akmrishg.png", "mips smooth")
+ATT.Description = [[A custom handguard for AK series that allow to attach foregrips and tacticals]]
+ATT.MenuCategory = "ARC9 - Insurgency 2"
+ATT.Category = "ins2_akmhandguard"
+ATT.SortOrder = 50
+
+ATT.Model = "models/weapons/ins/upgrades/a_woodgrips_akmris.mdl"
+
+ARC9.LoadAttachment(ATT, "ins_akmrishandguard")
+
+-----------------------------------------------AK74U
+
+ATT = {}
+
+ATT.PrintName = "AKS-74U Handguard"
+ATT.CompactName = "Wooden handguard"
+ATT.Icon = Material("entities/aks74uhg.png", "mips smooth")
+ATT.Description = [[Standard issue AK-74 handguard]]
+ATT.MenuCategory = "ARC9 - Insurgency 2"
+ATT.Category = "ins2_aksuhandguard"
+
+ATT.Model = "models/weapons/ins/upgrades/a_standard_aks74u.mdl"
+
+ARC9.LoadAttachment(ATT, "ins_aksuhandguard")
+
+ATT = {}
+
+ATT.PrintName = "AKSU Railed Handguard"
+ATT.CompactName = "RIS Handguard"
+ATT.Icon = Material("entities/aks74urailhg.png", "mips smooth")
+ATT.Description = [[A custom handguard for AK series that allow to attach foregrips and tacticals]]
+ATT.MenuCategory = "ARC9 - Insurgency 2"
+ATT.Category = "ins2_aksuhandguard"
+ATT.SortOrder = 50
+
+ATT.Model = "models/weapons/ins/upgrades/a_woodgrips_aks74uris.mdl"
+
+ARC9.LoadAttachment(ATT, "ins_aksurishandguard")

@@ -14,21 +14,23 @@ ATT.ModelOffset = Vector(0, 0, 0)
 
 ATT.RTScope = true
 ATT.RTScopeSubmatIndex = 3
-ATT.RTScopeFOV = 1
 ATT.RTScopeColorable = false
-ATT.RTScopeShadowIntensity = 10
+ATT.RTScopeShadowIntensity = 20
+ATT.RTScopeMagnification = 6
+ATT.ScopeScreenRatio = 700/1080
+ATT.RTScopeNoPP = false
 
 ATT.Sights = {
     {
         Pos = Vector(0, 10, -0.8),
         Ang = Angle(0, 0, 0),
 		ViewModelFOV = 50,
+        Magnification = 1.15,
     },
 }
 
-ATT.ScopeScreenRatio = 1.5
-
 ATT.AimDownSightsTimeMult = 2
+ATT.SwayMultSights = 1.6
 
 ARC9.LoadAttachment(ATT, "ins2_m40optic")
 ----------------------------------------------------------------
@@ -66,21 +68,33 @@ ATT.Model = "models/weapons/ins/upgrades/a_optic_elcan.mdl"
 ATT.ModelOffset = Vector(-0.6, 0, 0.1)
 
 ATT.RTScope = true
+ATT.RTScopeMagnification = 3
+ATT.ScopeScreenRatio = 425/1080
 ATT.RTScopeSubmatIndex = 3
 ATT.RTScopeFOV = 4
 ATT.RTScopeColorable = false
-ATT.RTScopeShadowIntensity = 0.2
+ATT.RTScopeReticleScale = 1
+ATT.RTScopeShadowIntensity = 0.1
+ATT.RTScopeNoPP = false
 
 ATT.Sights = {
     {
         Pos = Vector(-0, 6, -1.6),
         Ang = Angle(0, 0, 0),
-		ViewModelFOV = 50,
+		ViewModelFOV = 60,
+        Magnification = 1.15,
+        IgnoreExtra = true
+    },
+    { -- Top
+        Pos = Vector(0, 8, -2.55),
+        Ang = Angle(0, 0, 0),
+        Magnification = 1.15,
+        ViewModelFOV = 70,
+        Disassociate = true,
     },
 }
 
-ATT.ScopeScreenRatio = 1
-
 ATT.AimDownSightsTimeMult = 3
+ATT.SwayMultSights = 1.3
 
 ARC9.LoadAttachment(ATT, "ins2_c79m40optic")

@@ -41,6 +41,8 @@ SWEP.WorldModelOffset = {
 }
 SWEP.NoTPIKVMPos = true
 
+SWEP.CantPeek = true
+
 SWEP.DefaultBodygroups = "0500000000000000000000"
 SWEP.DefaultSkin = 1
 
@@ -144,7 +146,7 @@ SWEP.SpeedMult = 0.95
 -------------------------- SOUNDS
 
 SWEP.ShootVolume = 125
-SWEP.ShootVolumeActual = 1
+SWEP.ShootVolumeActual = 0.5
 SWEP.ShootPitch = 100
 SWEP.ShootPitchVariation = 0.05
 

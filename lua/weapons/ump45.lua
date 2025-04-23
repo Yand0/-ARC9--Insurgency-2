@@ -248,6 +248,11 @@ SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
 
+SWEP.ShootVolume = 110
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
+
 local path = "weapons/ump45/ump45_"
 local common = "universal/uni_"
 

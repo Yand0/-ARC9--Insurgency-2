@@ -104,7 +104,7 @@ SWEP.BarrelLength = 12
 SWEP.Recoil = 2
 
 SWEP.RecoilUp = 2 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 2 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 0.5 -- Multiplier for vertical recoil
 
 SWEP.RecoilPatternDrift = 5
 
@@ -113,7 +113,7 @@ SWEP.RecoilMultHipFire = 0.75
 -- These values determine how much extra movement is applied to the recoil entirely randomly, like in a circle.
 -- This type of recoil CANNOT be predicted.
 SWEP.RecoilRandomUp = 0.1
-SWEP.RecoilRandomSide = 0.1
+SWEP.RecoilRandomSide = 0
 
 SWEP.RecoilDissipationRate = 100 -- How much recoil dissipates per second.
 SWEP.RecoilResetTime = 0.05 -- How long the gun must go before the recoil pattern starts to reset.
@@ -190,6 +190,8 @@ SWEP.IronSights = {
     Magnification = 1.0,
 }
 
+SWEP.PeekMaxFOV = 70
+
 SWEP.SprintPos = Vector(1, 1, -1)
 SWEP.SprintAng = Angle(20, -6, -20)
 SWEP.SprintVerticalOffset = false -- Moves vm when looking up/down while sprinting (set to false if gun clips into camera)
@@ -250,6 +252,11 @@ SWEP.CamQCA_Mult = 1
 SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
+
+SWEP.ShootVolume = 110
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
 
 local path = "weapons/mp5k/mp5k_"
 local common = "universal/uni_"

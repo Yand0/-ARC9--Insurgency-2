@@ -249,6 +249,11 @@ SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
 
+SWEP.ShootVolume = 125
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
+
 local path = "weapons/rpk/rpk_"
 local common = "universal/uni_"
 

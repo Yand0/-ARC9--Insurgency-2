@@ -97,7 +97,7 @@ SWEP.BarrelLength = 24
 -------------------------- RECOIL
 
 -- General recoil multiplier
-SWEP.Recoil = 4
+SWEP.Recoil = 3
 
 -- These multipliers affect the predictible recoil by making the pattern taller, shorter, wider, or thinner.
 SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
@@ -214,6 +214,8 @@ SWEP.CustomizeSnapshotFOV = 100
 
 SWEP.BipodPos = Vector(0, 0, 0)
 
+SWEP.PeekMaxFOV = 70
+
 -------------------------- HoldTypes
 
 SWEP.HoldType = "shotgun"
@@ -245,6 +247,11 @@ SWEP.CamQCA_Mult = 1
 SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
+
+SWEP.ShootVolume = 125
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
 
 local path = "weapons/sks/sks_"
 local common = "universal/uni_"

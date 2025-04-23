@@ -41,6 +41,8 @@ SWEP.WorldModelOffset = {
 }
 SWEP.NoTPIKVMPos = false
 
+SWEP.CantPeek = true
+
 SWEP.DefaultBodygroups = "0500000000000000000000"
 SWEP.DefaultSkin = 1
 

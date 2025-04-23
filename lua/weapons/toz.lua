@@ -44,6 +44,8 @@ SWEP.NoTPIKVMPos = true
 SWEP.DefaultBodygroups = "0000000000000000000000"
 SWEP.DefaultSkin = 0
 
+SWEP.CantPeek = true
+
 -------------------------- DAMAGE PROFILE
 
 SWEP.DamageMax = 225 -- Damage done at point blank range
@@ -140,7 +142,7 @@ SWEP.SpeedMult = 0.95
 -------------------------- SOUNDS
 
 SWEP.ShootVolume = 125
-SWEP.ShootVolumeActual = 1
+SWEP.ShootVolumeActual = 0.5
 SWEP.ShootPitch = 100
 SWEP.ShootPitchVariation = 0.05
 
@@ -148,10 +150,10 @@ SWEP.ShootSound = "weapons/toz_shotgun/toz_fp.wav"
 SWEP.DistantShootSound = "weapons/toz_shotgun/toz_dist.wav"
 
 SWEP.DryFireSound = "weapons/toz_shotgun/toz_empty.wav"
-SWEP.DryFireSingleAction = false
+SWEP.DryFireSingleAction = true
 
-SWEP.EnterSightsSound = ARC9DOI.AimIn
-SWEP.ExitSightsSound = ARC9DOI.AimOut
+SWEP.EnterSightsSound = "universal/uni_ads_in_01.wav"
+SWEP.ExitSightsSound = "universal/uni_ads_out_01.wav"
 
 -------------------------- EFFECTS
 
@@ -227,6 +229,7 @@ SWEP.BipodAng = Angle(0, 0, 0)
 
 SWEP.PeekPos = Vector(2, 0, -2)
 SWEP.PeekAng = Angle(0, 0, 0)
+SWEP.PeekFov = 70
 
 SWEP.HeightOverBore = 1
 
@@ -245,8 +248,9 @@ SWEP.AnimDraw = false
 SWEP.AnimMelee = ACT_GMOD_GESTURE_MELEE_SHOVE_2HAND
 
 SWEP.HideBones = {
-    "Shell_1",
-    "Shell_2"
+    "Shell",
+    "Shell_2",
+	"Shell_3"
 }
 
 local path = "weapons/toz_shotgun/toz_"

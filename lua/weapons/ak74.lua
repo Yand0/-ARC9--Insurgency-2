@@ -178,8 +178,8 @@ SWEP.TracerColor = Color(255, 0, 0) -- Color of tracers. Only works if tracer ef
 -------------------------- POSITIONS
 
 SWEP.IronSights = {
-    Pos = Vector(-2.25, -1.0, 0.75),
-    Ang = Angle(0.0, 0.35, 0.68),
+    Pos = Vector(-2.25, -1.0, 0.65),
+    Ang = Angle(0.0, 0, 0),
     Midpoint = { -- Where the gun should be at the middle of it's irons
         Pos = Vector(0, 0, 0),
         Ang = Angle(0, 0, 0),
@@ -215,6 +215,8 @@ SWEP.CustomizePos = Vector(12, 25, 5)
 SWEP.CustomizeSnapshotFOV = 100
 
 SWEP.BipodPos = Vector(0, 0, 0)
+
+SWEP.PeekMaxFOV = 70
 
 -------------------------- HoldTypes
 
@@ -256,6 +258,7 @@ SWEP.ShootSound = path .. "fp.wav"
 SWEP.DistantShootSound = "^" .. path .. "dist.wav"
 SWEP.ShootSoundSilenced = path .. "suppressed_fp.wav"
 SWEP.DryFireSound = "weapons/ak74/ak74_empty.wav"
+SWEP.DistantShootSoundSilenced = path .. "weapons/universal/null.wav"
 
 SWEP.DryFireSingleAction = true
 
@@ -371,8 +374,12 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 39 / 30,
         EventTable = {
+		    {s = common .. "sprint_start_01.wav", t = 2 / 30},
+            {s = path .. "magrelease.wav", t = 14 / 30},
             {s = path .. "magout.wav", t = 16 / 30},
-            {s = path .. "magin.wav", t = 61 / 30},
+            {s = path .. "magout_rattle.wav", t = 18 / 30},
+            {s = path .. "magin.wav", t = 60 / 30},
+            {s = common .. "lean_in_03.wav", t = 80 / 30},
         },
         IKTimeLine = {
             {
@@ -402,10 +409,15 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 29 / 30,
         EventTable = {
-            {s = path .. "magout_rattle.wav", t = 14 / 30},
+		    {s = common .. "sprint_start_01.wav", t = 2 / 30},
+            {s = path .. "magrelease.wav", t = 14 / 30},
+            {s = path .. "magout.wav", t = 16 / 30},
+            {s = path .. "magout_rattle.wav", t = 18 / 30},
             {s = path .. "magin.wav", t = 60 / 30},
+			{s = common .. "lean_in_03.wav", t = 80 / 30},
             {s = path .. "boltback.wav", t = 100 / 30},
 			{s = path .. "boltrelease.wav", t = 105 / 30},
+			{s = common .. "lean_out_02.wav", t = 115 / 30},
         },
         IKTimeLine = {
             {
@@ -523,7 +535,7 @@ SWEP.SuppressDefaultEvents = true
 SWEP.Attachments = {
 	{
         PrintName = "Handguard",
-		DefaultName = "6P20",
+		DefaultName = "Wooden handguard",
         Category = {"ins2_akhandguard"},
         Bone = "A_Underbarrel",
         Pos = Vector(-4.2, -1.35, 0),
@@ -532,7 +544,7 @@ SWEP.Attachments = {
     },
 	{
 	    PrintName = "Dustcover",
-		DefaultName = "6P1",
+		DefaultName = "Wooden handguard",
         Bone = "A_Optic",
         Pos = Vector(0, 0, 0),
         Ang = Angle(90, 90, 0),
@@ -572,5 +584,13 @@ SWEP.Attachments = {
         Pos = Vector(0, -0.25, 0),
         Ang = Angle(0, 0, 0),
         Category = {"ins2_akflashlaser"},
+	},
+	{
+	    PrintName = "Muzzle",
+		DefaultName = "Muzzle brake",
+        Bone = "Weapon",
+        Pos = Vector(0, 15.75, 0.3),
+        Ang = Angle(180, 90, 0),
+        Category = {"ins2_silencersak"},
 	},
 }

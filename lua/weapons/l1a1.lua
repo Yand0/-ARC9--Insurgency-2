@@ -97,11 +97,11 @@ SWEP.BarrelLength = 24
 -------------------------- RECOIL
 
 -- General recoil multiplier
-SWEP.Recoil = 4
+SWEP.Recoil = 3.5
 
 -- These multipliers affect the predictible recoil by making the pattern taller, shorter, wider, or thinner.
 SWEP.RecoilUp = 1 -- Multiplier for vertical recoil
-SWEP.RecoilSide = 1.5 -- Multiplier for vertical recoil
+SWEP.RecoilSide = 0.1 -- Multiplier for vertical recoil
 
 SWEP.RecoilMultHipFire = 2.75
 
@@ -214,6 +214,8 @@ SWEP.CustomizeSnapshotFOV = 100
 
 SWEP.BipodPos = Vector(0, 0, 0)
 
+SWEP.PeekMaxFOV = 70
+
 -------------------------- HoldTypes
 
 SWEP.HoldType = "shotgun"
@@ -245,6 +247,11 @@ SWEP.CamQCA_Mult = 1
 SWEP.CamCoolView = true
 
 -------------------------- SOUNDS
+
+SWEP.ShootVolume = 125
+SWEP.ShootVolumeActual = 0.5
+SWEP.ShootPitch = 100
+SWEP.ShootPitchVariation = 0.05
 
 local path = "weapons/fnfal/fnfal_"
 local common = "universal/uni_"
@@ -368,8 +375,11 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 39 / 30,
         EventTable = {
+            {s = common .. "sprint_start_01.wav", t = 2 / 30},
             {s = path .. "magout.wav", t = 16 / 30},
+            {s = path .. "magout_rattle.wav", t = 17 / 30},
             {s = path .. "magin.wav", t = 61 / 30},
+            {s = common .. "lean_in_03.wav", t = 80 / 30},
         },
         IKTimeLine = {
             {
@@ -399,10 +409,13 @@ SWEP.Animations = {
         HideBoneIndex = 1,
         MagSwapTime = 29 / 30,
         EventTable = {
+            {s = common .. "sprint_start_01.wav", t = 2 / 30},
             {s = path .. "magout.wav", t = 14 / 30},
+            {s = path .. "magout_rattle.wav", t = 15 / 30},
             {s = path .. "magin.wav", t = 60 / 30},
-            {s = path .. "boltback.wav", t = 95 / 30},
-			{s = path .. "boltrelease.wav", t = 100 / 30},
+            {s = path .. "boltback.wav", t = 100 / 30},
+			{s = path .. "boltrelease.wav", t = 105 / 30},
+            {s = common .. "lean_in_03.wav", t = 115 / 30},
         },
         IKTimeLine = {
             {
